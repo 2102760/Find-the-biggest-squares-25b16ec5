@@ -16,10 +16,34 @@ for ($i = 0; $i < count($inputLines); $i++) {
             $nextLineNextCharter = $nextLineCharacters[$j + 1];
 
             if ($character === $nextCharacter && $character === $nextLineCharter && $character === $nextLineNextCharter) {
-                $lineReadable = $i + 1;
-                $characterReadable = $j + 1;
-                echo 'found square at line ' . $lineReadable . ' and character ' . $characterReadable;
-                echo PHP_EOL;
+                $nextSecondLineCharacters = getCharactersFromLine($i + 2);
+
+                $nextSecondCharacter = $characters[$j + 2];
+                $nextSecondLineCharter = $nextLineCharacters[$j];
+                $nextSecondLineNextCharter = $nextLineCharacters[$j + 2];
+                if ($character === $nextSecondCharacter && $character === $nextSecondLineCharter && $character === $nextSecondLineNextCharter) {
+                    $nextThirdLineCharacters = getCharactersFromLine($i + 2);
+
+                    $nextThirdCharacter = $characters[$j + 2];
+                    $nextThirdLineCharter = $nextLineCharacters[$j];
+                    $nextThirdLineNextCharter = $nextLineCharacters[$j + 2];
+                    if ($character === $nextThirdCharacter && $character === $nextThirdLineCharter && $character === $nextThirdLineNextCharter) {
+                        $lineReadable = $i + 1;
+                        $characterReadable = $j + 1;
+                        echo 'found square at line ' . $lineReadable . ' and character ' . $characterReadable . ' with a size of 5x5';
+                        echo PHP_EOL;
+                    } else {
+                        $lineReadable = $i + 1;
+                        $characterReadable = $j + 1;
+                        echo 'found square at line ' . $lineReadable . ' and character ' . $characterReadable . ' with a size of 3x3';
+                        echo PHP_EOL;
+                    }
+                } else {
+                    $lineReadable = $i + 1;
+                    $characterReadable = $j + 1;
+                    echo 'found square at line ' . $lineReadable . ' and character ' . $characterReadable . ' with a size of 2x2';
+                    echo PHP_EOL;
+                }
             }
         }
     }
